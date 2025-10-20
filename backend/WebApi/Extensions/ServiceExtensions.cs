@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FluentValidation;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 using WebApi.Handlers;
 
 namespace WebApi.Extensions
@@ -16,6 +18,14 @@ namespace WebApi.Extensions
         public static IServiceCollection ConfigureDatabase(this WebApplicationBuilder builder)
         {
             return builder.Services.AddDbContext<FactorySystemsDbContext>(options => options.UseSqlite("Data Source=factory_systems.db"));
+        }
+
+        public static IServiceCollection ConfigureServices(this IServiceCollection services)
+        {
+            ValidatorOptions.Global.DefaultRuleLevelCascadeMode = CascadeMode.Stop;
+            ValidatorOptions.Global.DefaultClassLevelCascadeMode = CascadeMode.Stop;
+                
+            return services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly()) ;
         }
 
         public static IServiceProvider ApplyDatabaseMigration(this IServiceProvider serviceProvider)
