@@ -1,6 +1,7 @@
 using WebApi.Extensions;
+using WebApi.Handlers;
 
-namespace FactorySystems
+namespace WebApi
 {
     public class Program
     {
@@ -22,6 +23,8 @@ namespace FactorySystems
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
 
