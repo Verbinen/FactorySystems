@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Models;
+using WebApi.Models;
 
 namespace WebApi.Handlers
 {
@@ -29,7 +29,7 @@ namespace WebApi.Handlers
                     "customer2@company.com"
                     ],
                 Status = "Ativo",
-                Database = "SQL Server",
+                Database = "SQLServer",
                 InstallationLocation = "Main Server"
             };
 
