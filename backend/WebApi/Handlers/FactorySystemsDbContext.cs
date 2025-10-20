@@ -29,7 +29,7 @@ namespace WebApi.Handlers
                     "customer2@company.com"
                     ],
                 Status = "Ativo",
-                Database = "SQL Server",
+                Database = "SQLServer",
                 InstallationLocation = "Main Server"
             };
 

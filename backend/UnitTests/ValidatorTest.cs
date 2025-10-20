@@ -1,17 +1,4 @@
-﻿using FluentValidation;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using NSubstitute;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using UnitTests.DataGenerator;
-using WebApi.Controllers;
-using WebApi.Handlers;
+﻿using UnitTests.DataGenerator;
 using WebApi.Models;
 using WebApi.Validators;
 
@@ -82,7 +69,7 @@ namespace UnitTests
         }
 
         [Theory]
-        [InlineData("SQL Server")]
+        [InlineData("SQLServer")]
         [InlineData("Oracle")]
         [InlineData("MySQL")]
         public async Task Validator_IsValid_WhenValidDatabase(string database)
@@ -105,7 +92,7 @@ namespace UnitTests
             var result = await _validator.ValidateAsync(newSystem);
 
             Assert.False(result.IsValid);
-            Assert.Equal("Please provide a valid Database ('SQL Server', 'Oracle', 'MySQL')", result.Errors.First().ErrorMessage);
+            Assert.Equal("Please provide a valid Database ('SQLServer', 'Oracle', 'MySQL')", result.Errors.First().ErrorMessage);
         }
         
         [Theory]
