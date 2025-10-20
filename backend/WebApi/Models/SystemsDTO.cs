@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Models
+namespace WebApi.Models
 {
     public sealed class SystemsDTO
     {

@@ -1,4 +1,4 @@
-﻿using Models;
+﻿using WebApi.Models;
 
 namespace UnitTests.DataGenerator
 {

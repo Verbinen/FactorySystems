@@ -3,11 +3,11 @@ using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Models;
 using NSubstitute;
 using UnitTests.DataGenerator;
 using WebApi.Controllers;
 using WebApi.Handlers;
+using WebApi.Models;
 
 namespace UnitTests
 {

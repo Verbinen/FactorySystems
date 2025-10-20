@@ -1,4 +1,4 @@
-﻿namespace Models
+﻿namespace WebApi.Models
 {
     public class ApiException : Exception
     {

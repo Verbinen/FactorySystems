@@ -2,8 +2,8 @@
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Models;
 using WebApi.Handlers;
+using WebApi.Models;
 
 namespace WebApi.Controllers
 {

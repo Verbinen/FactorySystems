@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Models;
 using NSubstitute;
 using System;
 using System.Collections.Generic;
@@ -13,6 +12,7 @@ using System.Threading.Tasks;
 using UnitTests.DataGenerator;
 using WebApi.Controllers;
 using WebApi.Handlers;
+using WebApi.Models;
 using WebApi.Validators;
 
 namespace UnitTests
