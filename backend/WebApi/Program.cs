@@ -9,8 +9,9 @@ namespace WebApi
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.ConfigureAppSettings();     
+            builder.ConfigureAppSettings();
             builder.ConfigureDatabase();
+            builder.Services.ConfigureServices();
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
@@ -23,6 +24,8 @@ namespace WebApi
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.Services.ApplyDatabaseMigration();
 
             app.UseMiddleware<ExceptionMiddleware>();
 

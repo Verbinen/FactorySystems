@@ -15,7 +15,17 @@ namespace WebApi.Extensions
 
         public static IServiceCollection ConfigureDatabase(this WebApplicationBuilder builder)
         {
-            return builder.Services.AddDbContext<FactorySystemsDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection")));
+            return builder.Services.AddDbContext<FactorySystemsDbContext>(options => options.UseSqlite("Data Source=factory_systems.db"));
+        }
+
+        public static IServiceProvider ApplyDatabaseMigration(this IServiceProvider serviceProvider)
+        {
+            using var scope = serviceProvider.CreateScope();
+
+            var db = scope.ServiceProvider.GetRequiredService<FactorySystemsDbContext>();
+            db.Database.Migrate();
+
+            return serviceProvider;
         }
     }
 }
