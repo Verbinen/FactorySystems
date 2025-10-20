@@ -1,6 +1,7 @@
 using WebApi.Extensions;
+using WebApi.Handlers;
 
-namespace FactorySystems
+namespace WebApi
 {
     public class Program
     {
@@ -8,8 +9,9 @@ namespace FactorySystems
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.ConfigureAppSettings();     
+            builder.ConfigureAppSettings();
             builder.ConfigureDatabase();
+            builder.Services.ConfigureServices();
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
@@ -22,6 +24,10 @@ namespace FactorySystems
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.Services.ApplyDatabaseMigration();
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
 

@@ -633,3 +633,6 @@ obj/
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/csharp,visualstudio,visualstudiocode,angular,dotnetcore
+/backend/WebApi/factory_systems.db
+/backend/WebApi/factory_systems.db-shm
+/backend/WebApi/factory_systems.db-wal
