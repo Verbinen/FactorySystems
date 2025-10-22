@@ -1,0 +1,140 @@
+<app-title-page [title]="editMode ? 'Edit application' : 'Register a new application'"></app-title-page>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-fluid">
+  <div class="grid">
+    <div class="col-12 md:col-6">
+      <div class="field">
+        <label for="applicationName" class="block font-medium mb-2">Application Name</label>
+        <input
+          pInputText
+          id="applicationName"
+          formControlName="applicationName"
+          placeholder="Enter application name"
+          class="w-full"
+        />
+      </div>
+    </div>
+
+    <div class="col-12 md:col-6">
+      <div class="field">
+        <label for="applicationCode" class="block font-medium mb-2">Application Code</label>
+        <input
+          pInputText
+          id="applicationCode"
+          formControlName="applicationCode"
+          placeholder="Enter application code"
+          class="w-full"
+        />
+      </div>
+    </div>
+
+    <div class="col-12 md:col-6">
+      <div class="field">
+        <label for="costCenter" class="block font-medium mb-2">Cost Center</label>
+        <input
+          pInputText
+          id="costCenter"
+          formControlName="costCenter"
+          placeholder="Enter cost center"
+          class="w-full"
+        />
+      </div>
+    </div>
+
+    <div class="col-12 md:col-6">
+      <div class="field">
+        <label for="status" class="block font-medium mb-2">Status</label>
+        <input
+          pInputText
+          id="status"
+          formControlName="status"
+          placeholder="Enter status"
+          class="w-full"
+        />
+      </div>
+    </div>
+
+    <div class="col-12 md:col-6">
+      <div class="field">
+        <label for="database" class="block font-medium mb-2">Database</label>
+        <input
+          pInputText
+          id="database"
+          formControlName="database"
+          placeholder="Enter database"
+          class="w-full"
+        />
+      </div>
+    </div>
+
+    <div class="col-12 md:col-6">
+      <div class="field">
+        <label for="installationLocation" class="block font-medium mb-2"
+          >Installation Location</label
+        >
+        <input
+          pInputText
+          id="installationLocation"
+          formControlName="installationLocation"
+          placeholder="Enter installation location"
+          class="w-full"
+        />
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="field">
+        <label>Support Emails</label>
+
+        <div class="field__email">
+          <input
+            pInputText
+            #emailInput
+            placeholder="Enter email address"
+            [(ngModel)]="newEmail"
+            [ngModelOptions]="{ standalone: true }"
+            (keyup.enter)="addEmail()"
+          />
+          <p-button
+            icon="pi pi-plus"
+            styleClass="p-button-outlined"
+            (click)="addEmail()"
+          ></p-button>
+        </div>
+
+        <div class="email-list">
+          @for(email of getEmailControls(); track $index; let i = $index) {
+          <div class="email-list__items">
+            <input pInputText [formControl]="email" placeholder="email@example.com" />
+            <p-button
+              icon="pi pi-times"
+              styleClass="p-button-danger p-button-text"
+              (click)="removeEmail(i)"
+            ></p-button>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p-button
+      label="Cancel"
+      icon="pi pi-times"
+      styleClass="p-button-text p-button-secondary"
+      (click)="onCancel()"
+      [disabled]="loading"
+    ></p-button>
+    <p-button
+      label="{{ editMode ? 'Update' : 'Save' }}"
+      icon="pi pi-check"
+      styleClass="p-button-primary"
+      type="submit"
+      [disabled]="form.invalid"
+      [loading]="loading"
+    ></p-button>
+  </div>
+</form>
+
+<app-error-dialog [(visible)]="showErrorDialog" [error]="errorResponse"></app-error-dialog>

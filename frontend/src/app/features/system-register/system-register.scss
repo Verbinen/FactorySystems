@@ -1,0 +1,45 @@
+:host {
+  display: block;
+}
+
+.field {
+  margin-bottom: 0.3rem;
+
+  &__email {
+    display: flex;
+    gap: 12px;
+  }
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.p-card {
+  border-radius: 12px;
+  border: 1px solid var(--surface-300);
+}
+
+.p-inputtext {
+  width: 100%;
+}
+.col-12 {
+  padding: 0.5rem 0;
+}
+
+.email-list {
+  &__items {
+    display: flex;
+    gap: 12px;
+    margin-top: 6px;
+  }
+}
+
+.footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: end;
+}
