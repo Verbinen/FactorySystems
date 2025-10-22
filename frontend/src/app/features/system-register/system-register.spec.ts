@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SystemRegister } from './system-register';
+import { HttpClient, HttpHandler } from '@angular/common/http';
+import { MessageService } from 'primeng/api';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('SystemRegister', () => {
   let component: SystemRegister;
@@ -8,7 +11,8 @@ describe('SystemRegister', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SystemRegister]
+      imports: [SystemRegister, RouterTestingModule],
+      providers: [HttpClient, HttpHandler, MessageService]
     })
     .compileComponents();
 
