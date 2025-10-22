@@ -1,0 +1,38 @@
+<p-dialog
+  header="Error"
+  [(visible)]="visible"
+  [style]="{ width: '40vw' }"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  (onHide)="onClose()"
+  styleClass="error-dialog"
+>
+  <div class="dialog-content">
+    <div class="error-container">
+
+      <div class="error-icon">
+        <i class="pi pi-exclamation-triangle"></i>
+      </div>
+
+      <div class="error-item">
+        <span class="label">Status Code</span>
+        <span class="value status-code">{{ error?.statusCode }}</span>
+      </div>
+
+      <div class="error-item full-width">
+        <span class="label">Error Message</span>
+        <span class="value error-message">{{ error?.errorMessage }}</span>
+      </div>
+    </div>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <p-button
+      label="Close"
+      icon="pi pi-times"
+      styleClass="p-button-danger"
+      (click)="onClose()"
+    ></p-button>
+  </ng-template>
+</p-dialog>
