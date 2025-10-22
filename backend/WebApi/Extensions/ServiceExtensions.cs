@@ -37,5 +37,20 @@ namespace WebApi.Extensions
 
             return serviceProvider;
         }
+
+        public static IServiceCollection ConfigureCors(this IServiceCollection services)
+        {
+            services.AddCors(setup =>
+            {
+                setup.AddPolicy("Cors", policy =>
+                {
+                    policy.AllowAnyOrigin();
+                    policy.AllowAnyMethod();
+                    policy.AllowAnyHeader();
+                });
+            });
+
+            return services;
+        }
     }
 }

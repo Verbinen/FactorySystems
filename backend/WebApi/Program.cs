@@ -12,6 +12,7 @@ namespace WebApi
             builder.ConfigureAppSettings();
             builder.ConfigureDatabase();
             builder.Services.ConfigureServices();
+            builder.Services.ConfigureCors();
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
@@ -28,6 +29,8 @@ namespace WebApi
             app.Services.ApplyDatabaseMigration();
 
             app.UseMiddleware<ExceptionMiddleware>();
+
+            app.UseCors("Cors");
 
             app.UseHttpsRedirection();
 
