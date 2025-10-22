@@ -1,1 +1,8 @@
-<p>system-list works!</p>
+<app-title-page title="Application List"></app-title-page>
+<app-table [data]="data" (deleteData)="handleDelete($event)" (viewData)="openDetails($event)"></app-table>
+
+<app-system-details-dialog
+  [system]="selectedSystem"
+  [(visible)]="showDetailsDialog"
+></app-system-details-dialog>
+
