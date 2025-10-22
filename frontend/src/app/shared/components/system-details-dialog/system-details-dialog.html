@@ -1,0 +1,72 @@
+<p-dialog
+  header="System Details"
+  [(visible)]="visible"
+  [style]="{ width: '50vw' }"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  (onHide)="onClose()"
+  styleClass="system-details-dialog"
+>
+  <div class="dialog-content">
+    <div class="details-grid">
+
+      <div class="detail-item full-width">
+        <span class="label">System ID</span>
+        <span class="value id-text">{{ system?.id }}</span>
+      </div>
+
+      <div class="detail-item">
+        <span class="label">Application Name</span>
+        <span class="value">{{ system?.applicationName || "" }}</span>
+      </div>
+
+      <div class="detail-item">
+        <span class="label">Application Code</span>
+        <span class="value">{{ system?.applicationCode || 'N/A' }}</span>
+      </div>
+
+      <div class="detail-item">
+        <span class="label">Cost Center</span>
+        <span class="value">{{ system?.costCenter }}</span>
+      </div>
+
+      <div class="detail-item">
+        <span class="label">Status</span>
+        <span class="value">{{ system?.status || 'N/A' }}</span>
+      </div>
+
+      <div class="detail-item">
+        <span class="label">Database</span>
+        <span class="value">{{ system?.database || 'N/A' }}</span>
+      </div>
+
+      <div class="detail-item">
+        <span class="label">Installation Location</span>
+        <span class="value">{{ system?.installationLocation || 'N/A' }}</span>
+      </div>
+
+      <div class="detail-item full-width">
+        <span class="label">Support Emails</span>
+        <div class="emails-container">
+          <div *ngFor="let email of system?.emailSupport || []" class="email-item">
+            {{ email }}
+          </div>
+          <div *ngIf="!system?.emailSupport || system?.emailSupport?.length === 0" class="no-data">
+            No support emails
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <p-button
+      label="Close"
+      icon="pi pi-times"
+      styleClass="p-button-text"
+      (click)="onClose()"
+    ></p-button>
+  </ng-template>
+</p-dialog>
